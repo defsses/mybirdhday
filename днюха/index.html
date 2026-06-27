@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Приглашение на День Рождения</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffd1dc;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            max-width: 700px;
+            width: 100%;
+            background-color: rgba(255, 240, 245, 0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(255, 105, 135, 0.25), 0 8px 20px rgba(255, 80, 120, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #b3415c;
+            text-shadow: 0 4px 12px rgba(255, 130, 160, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #b34a66;
+            margin-top: -8px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #d45a7a, #b3415c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .invite-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #5e2e3d;
+            background: rgba(255, 220, 230, 0.4);
+            padding: 16px 18px;
+            border-radius: 40px;
+            margin-bottom: 28px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .photo-section {
+            background: rgba(255, 220, 230, 0.3);
+            border-radius: 40px;
+            padding: 20px 15px 15px;
+            margin: 20px 0 30px;
+            border: 1px dashed #f09bb0;
+        }
+
+        .photo-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #a14a62;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 4px 18px;
+            border-radius: 30px;
+        }
+
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .photo-item {
+            flex: 1 1 120px;
+            max-width: 160px;
+            min-width: 100px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 18px rgba(200, 70, 100, 0.15);
+            border: 2px solid white;
+            transition: 0.25s ease;
+            background: #ffe2eb;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 16px 28px rgba(200, 70, 100, 0.25);
+        }
+
+        .photo-item img {
+            display: block;
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            background: #ffb6c9;
+        }
+
+        /* Стиль для ошибки загрузки фото */
+        .photo-item img::before {
+            content: "📷 фото не найдено";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: #ffbfd0;
+            color: #a1425a;
+            font-size: 0.8rem;
+        }
+
+        .event-date {margin: 20px 0 16px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #872f4a;
+            background: rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            padding: 8px 34px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 6px 14px rgba(255, 90, 120, 0.15);
+        }
+
+        .event-details {
+            font-size: 1.1rem;
+            color: #572d3b;
+            font-weight: 500;
+            background: rgba(255, 215, 225, 0.5);
+            padding: 12px 16px;
+            border-radius: 60px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #7a4255;
+            border-top: 1px solid rgba(255, 130, 160, 0.3);
+            padding-top: 18px;
+            font-weight: 500;
+        }
+
+        .footer-note span {
+            background: rgba(255, 200, 215, 0.5);
+            padding: 2px 12px;
+            border-radius: 40px;
+        }
+
+        /* Подсказка как добавить фото */
+        .photo-tip {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #a14a62;
+            opacity: 0.7;
+            background: rgba(255,255,255,0.3);
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        @media (max-width: 550px) {
+            .invitation-card {
+                padding: 30px 18px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subhead {
+                font-size: 1.1rem;
+            }
+            .photo-item {
+                flex: 1 1 90px;
+                max-width: 120px;
+            }
+            .photo-item img {
+                height: 100px;
+            }
+            .event-date {
+                font-size: 1.3rem;
+                padding: 6px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <h1>🎂 День Рождения</h1>
+        <div class="subhead">✨ приглашение ✨</div>
+
+        <div class="invite-text">
+            Дорогие друзья!<br />
+            Приглашаю вас разделить со мной радость и тепло <br />
+            в день моего совершеннолетия. Будет вкусно и весело!
+        </div>
+
+        <!-- БЛОК ДЛЯ ФОТОГРАФИЙ -->
+        <div class="photo-section">
+            <h3>📸 наши моменты</h3>
+            <div class="photo-grid">
+                <!-- 
+                    ↓↓↓ СЮДА ВСТАВЛЯЙТЕ СВОИ ФОТО ↓↓↓
+                    
+                    ВАРИАНТ 1: Фото из интернета (просто скопируйте ссылку)
+                    <div class="photo-item">
+                        <img src="https://ссылка-на-картинку.jpg" alt="Фото" />
+                    </div>
+                    
+                    ВАРИАНТ 2: Фото с компьютера (положите фото в папку images)
+                    <div class="photo-item">
+                        <img src="images/ваше-фото.jpg" alt="Фото" />
+                    </div>
+                    
+                    ВАРИАНТ 3: Фото в той же папке, что и HTML
+                    <div class="photo-item">
+                        <img src="foto1.jpg" alt="Фото" />
+                    </div>
+                -->
+                
+                <!-- ПРИМЕРЫ (работают) -->
+                <div class="photo-item">
+                    <img src="images/photo1.jpg" alt="Фото 1" />
+                </div>
+                <div class="photo-item">
+                    <img src="images/photo2.jpg" alt="Фото 2" />
+                </div>
+                <div class="photo-item">
+                    <img src="images/photo3.jpg" alt="Фото 3" />
+                </div>
+            </div>
+            <div class="photo-tip">
+                ⭐ 
+            </div>
+        </div>
+
+        <div class="event-date">🗓️ 28 июля</div>
+        <div class="event-details">📍 уютный домик за городом </div><div class="footer-note">
+            <span>💗 жду вас с улыбкой и хорошим настроением 💗</span>
+        </div>
+    </div>
+</body>
+</html>
